@@ -1,0 +1,52 @@
+name: Amberium Token CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+          components: rustfmt, clippy
+      
+      - name: Install Solana
+        uses: ./.github/actions/install-solana
+        with:
+          solana_version: v1.17.0
+      
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'yarn'
+      
+      - name: Install Anchor CLI
+        run: |
+          npm i -g @coral-xyz/anchor-cli
+          anchor --version
+      
+      - name: Install dependencies
+        run: yarn install
+      
+      - name: Build
+        run: anchor build
+      
+      - name: Run Rust format check
+        run: cargo fmt --all -- --check
+      
+      - name: Run Clippy
+        run: cargo clippy -- -D warnings
+      
+      - name: Run tests
+        run: anchor test 

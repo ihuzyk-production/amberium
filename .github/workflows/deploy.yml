@@ -1,0 +1,68 @@
+name: Amberium Token Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      network:
+        description: 'Solana network to deploy to'
+        required: true
+        default: 'devnet'
+        type: choice
+        options:
+          - devnet
+          - mainnet-beta
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      
+      - name: Install Solana
+        uses: ./.github/actions/install-solana
+        with:
+          solana_version: v1.17.0
+      
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'yarn'
+      
+      - name: Install Anchor CLI
+        run: |
+          npm i -g @coral-xyz/anchor-cli
+          anchor --version
+      
+      - name: Install dependencies
+        run: yarn install
+      
+      - name: Build
+        run: anchor build
+      
+      - name: Setup Solana keypair
+        run: |
+          mkdir -p ~/.config/solana
+          echo "${{ secrets.SOLANA_KEYPAIR }}" > ~/.config/solana/id.json
+          solana config set --url ${{ github.event.inputs.network }}
+      
+      - name: Deploy
+        run: |
+          anchor deploy --provider.cluster ${{ github.event.inputs.network }}
+          
+      - name: Run Token Initialization Script
+        if: github.event.inputs.network == 'devnet'
+        run: node scripts/deploy_token.js
+      
+      # For mainnet, we just deploy the program but require manual token initialization
+      - name: Success Message
+        run: |
+          echo "Deployed to ${{ github.event.inputs.network }}"
+          echo "Program ID: $(solana address -k target/deploy/amberium_token-keypair.json)" 

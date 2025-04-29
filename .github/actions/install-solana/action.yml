@@ -1,0 +1,31 @@
+name: 'Install Solana CLI'
+description: 'Installs the Solana command-line tools'
+inputs:
+  solana_version:
+    description: 'Solana version to install'
+    required: true
+    default: 'v1.17.0'
+
+runs:
+  using: composite
+  steps:
+    - name: Cache Solana Install
+      id: cache-solana-install
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cache/solana
+          ~/.local/share/solana
+          ~/.config/solana
+        key: ${{ runner.os }}-solana-${{ inputs.solana_version }}
+        
+    - name: Download Solana Install Script
+      if: steps.cache-solana-install.outputs.cache-hit != 'true'
+      shell: bash
+      run: curl -sSf https://release.solana.com/${{ inputs.solana_version }}/install | sh
+      
+    - name: Add Solana to PATH
+      shell: bash
+      run: |
+        echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
+        solana --version 

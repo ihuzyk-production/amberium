@@ -1,0 +1,23 @@
+[features]
+seeds = false
+skip-lint = false
+
+[programs.localnet]
+amberium_token = "${PROGRAM_ID}"
+
+[programs.devnet]
+amberium_token = "${PROGRAM_ID}"
+
+[programs.mainnet]
+amberium_token = "${PROGRAM_ID}"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "${SOLANA_NETWORK:=devnet}"
+wallet = "${WALLET_PATH:=~/.config/solana/id.json}"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+deploy = "anchor deploy --program-name amberium_token"
