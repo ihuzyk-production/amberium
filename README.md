@@ -3,7 +3,7 @@
 ![Solana](https://img.shields.io/badge/Solana-20232A?style=for-the-badge&logo=solana&logoColor=3C68FF)
 ![Anchor](https://img.shields.io/badge/Anchor-3DBF61?style=for-the-badge&logo=anchor&logoColor=white)
 ![Token](https://img.shields.io/badge/SPL_Token-EEA01C?style=for-the-badge)
-
+![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
 
 Amberium (AMB) - інноваційний токен на блокчейні Solana, який революціонізує ринок бурштину завдяки токенізації реальних фізичних активів. Кожен токен AMB представляє точно 1 карат сертифікованого бурштину.
 
@@ -109,14 +109,6 @@ anchor test
 Діючий екземпляр токену Amberium на devnet:
 - Program ID: `86ouczdz4eVPC3TCvUMTB1VCXE3Ti3pNn41a9ztRrUTd`
 - Mint Address: Генерується при ініціалізації
-
-## 📝 Плани розвитку
-
-1. **Інтеграція з мобільними гаманцями**
-2. **Створення DEX для торгівлі Amberium**
-3. **Стейкінг програма з винагородами**
-4. **NFT сертифікати походження бурштину**
-5. **Cross-chain підтримка через мости**
 
 
 ## 📄 Ліцензія
