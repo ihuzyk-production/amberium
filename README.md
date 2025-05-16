@@ -1,120 +1,120 @@
+
 # 🔶 Amberium (AMB) Token
 
-![Solana](https://img.shields.io/badge/Solana-20232A?style=for-the-badge&logo=solana&logoColor=3C68FF)
-![Anchor](https://img.shields.io/badge/Anchor-3DBF61?style=for-the-badge&logo=anchor&logoColor=white)
-![Token](https://img.shields.io/badge/SPL_Token-EEA01C?style=for-the-badge)
+![Solana](https://img.shields.io/badge/Solana-20232A?style=for-the-badge&logo=solana&logoColor=3C68FF)  
+![Anchor](https://img.shields.io/badge/Anchor-3DBF61?style=for-the-badge&logo=anchor&logoColor=white)  
+![Token](https://img.shields.io/badge/SPL_Token-EEA01C?style=for-the-badge)  
 ![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
 
-Amberium (AMB) - інноваційний токен на блокчейні Solana, який революціонізує ринок бурштину завдяки токенізації реальних фізичних активів. Кожен токен AMB представляє точно 1 карат сертифікованого бурштину.
+Amberium (AMB) is an innovative token on the Solana blockchain that revolutionizes the amber market through the tokenization of real physical assets. Each AMB token represents exactly 1 carat of certified amber.
 
-## 💡 Проблема та рішення
+## 💡 Problem & Solution
 
-**Проблема**: Традиційний ринок бурштину потерпає від проблем з прозорістю, відстеженням походження та ліквідністю.
+**Problem**: The traditional amber market suffers from a lack of transparency, traceability, and liquidity.
 
-**Наше рішення**: Amberium створює цифрове представлення бурштину на блокчейні Solana, що забезпечує:
-- ✅ Прозору систему підтвердження походження
-- ✅ Глобальну ліквідність та миттєві транзакції
-- ✅ Дробну власність на цінні активи
-- ✅ Захист від підробок
+**Our Solution**: Amberium creates a digital representation of amber on the Solana blockchain, providing:
+- ✅ Transparent origin verification system  
+- ✅ Global liquidity and instant transactions  
+- ✅ Fractional ownership of valuable assets  
+- ✅ Protection against counterfeiting  
 
-## 🪙 Характеристики токену
+## 🪙 Token Specifications
 
-- **Відповідність**: 1 AMB = 1 карат бурштину
-- **Початкова ціна**: 1$ за 1 AMB
-- **Стандарт**: SPL токен на Solana
-- **Емісія**: Контрольована, підтверджена фізичним видобутком бурштину
-- **Функціональність**: Можливість передачі, зберігання та використання в DeFi
+- **Peg**: 1 AMB = 1 carat of amber  
+- **Initial Price**: $1 per AMB  
+- **Standard**: SPL token on Solana  
+- **Issuance**: Controlled, backed by verified amber extraction  
+- **Functionality**: Transferable, storable, and usable within DeFi ecosystems  
 
-## 🛠️ Технології
+## 🛠️ Technologies
 
-- **Blockchain**: Solana (вибрано за швидкість та низькі комісії)
-- **Smart Contract**: Розроблено з використанням Rust та Anchor Framework
-- **Client**: JavaScript з використанням Solana Web3.js та SPL-Token
+- **Blockchain**: Solana (chosen for speed and low fees)  
+- **Smart Contract**: Developed using Rust and the Anchor Framework  
+- **Client**: JavaScript using Solana Web3.js and SPL-Token libraries  
 
-## 📋 Передумови
+## 📋 Prerequisites
 
-Для роботи з проектом потрібно:
-- [Solana Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools)
-- [Anchor Framework](https://www.anchor-lang.com/docs/installation)
-- [Node.js](https://nodejs.org/) (v14+)
-- [Yarn](https://yarnpkg.com/)
+To work with the project, you’ll need:
+- [Solana Tool Suite](https://docs.solana.com/cli/install-solana-cli-tools)  
+- [Anchor Framework](https://www.anchor-lang.com/docs/installation)  
+- [Node.js](https://nodejs.org/) (v14+)  
+- [Yarn](https://yarnpkg.com/)  
 
-## 🚀 Швидкий старт
+## 🚀 Quick Start
 
-### Встановлення
+### Installation
 
 ```bash
-# Клонуйте репозиторій
+# Clone the repository
 git clone https://github.com/ihuzyk-production/amberium.git
 cd amberium
 
-# Встановіть залежності
+# Install dependencies
 yarn install
 
-# Створіть гаманець Solana (якщо у вас його ще немає)
+# Generate a Solana wallet (if you don’t have one)
 solana-keygen new -o ~/.config/solana/id.json
 
-# Налаштуйте devnet для розробки
+# Set up the devnet environment
 solana config set --url devnet
 
-# Отримайте тестові SOL
+# Request test SOL
 solana airdrop 2
 ```
 
-### Компіляція та розгортання
+### Compile & Deploy
 
 ```bash
-# Компіляція смарт-контракту
+# Compile the smart contract
 anchor build
 
-# Розгортання на devnet
+# Deploy to devnet
 anchor deploy
 ```
 
-### Операції з токеном
+### Token Operations
 
 ```bash
-# Ініціалізація нового токену з постачанням 1 мільйон
+# Initialize a new token with a supply of 1 million
 node app/direct-client.js init 1000000
 
-# Емісія 5000 нових токенів на основі підтвердженого видобутку
+# Mint 5000 new tokens backed by verified amber extraction
 node app/direct-client.js mint 5000
 ```
 
-## 🧪 Тестування
+## 🧪 Testing
 
 ```bash
-# Запуск автоматичних тестів
+# Run automated tests
 anchor test
 ```
 
-## 📐 Архітектура
+## 📐 Architecture
 
-### Смарт-контракт (Rust)
+### Smart Contract (Rust)
 
-Основні компоненти смарт-контракту:
+Key components of the smart contract:
 
-- **Initialize**: Створює новий токен з початковим постачанням
-- **MintTokens**: Емітує нові токени при підтвердженні видобутку бурштину
-- **AdminConfig**: PDA для зберігання адміністративних прав
-- **MintAuthority**: PDA для контролю емісії
+- **Initialize**: Creates a new token with initial supply  
+- **MintTokens**: Mints new tokens upon verified amber extraction  
+- **AdminConfig**: PDA for storing admin rights  
+- **MintAuthority**: PDA for controlling token issuance  
 
-### Клієнтська частина (JavaScript)
+### Client Side (JavaScript)
 
-- **amberium-client.js**: Клієнт з підтримкою Anchor IDL
-- **direct-client.js**: Альтернативний клієнт з прямими викликами
+- **amberium-client.js**: Client with Anchor IDL support  
+- **direct-client.js**: Alternative client with direct calls  
 
-## 🔍 Демо
+## 🔍 Demo
 
-Діючий екземпляр токену Amberium на devnet:
-- Program ID: `86ouczdz4eVPC3TCvUMTB1VCXE3Ti3pNn41a9ztRrUTd`
-- Mint Address: Генерується при ініціалізації
+Active Amberium token instance on devnet:  
+- Program ID: `86ouczdz4eVPC3TCvUMTB1VCXE3Ti3pNn41a9ztRrUTd`  
+- Mint Address: Generated during initialization  
 
+## 📄 License
 
-## 📄 Ліцензія
-
-Цей проект ліцензовано під [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-*© Amberium 2025* 
+*© Amberium 2025*
