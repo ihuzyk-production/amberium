@@ -1,0 +1,43 @@
+# Dependency directories
+node_modules/
+target/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build artifacts
+dist/
+build/
+.anchor/
+
+# Solana specific
+.config/
+
+# Private keys and ledger files
+*.keypair
+*keypair.json
+.anchor/test-ledger/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Config files that might contain secrets
+*-address.json
+mint-address.json
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
